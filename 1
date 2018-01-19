@@ -1,0 +1,18 @@
+class {'jdk_oracle':
+	version => "8",
+	version_update => "60",
+	version_build => '27',
+}
+
+class {'postgresql::server':
+	ip_mask_allow_all_users => '0.0.0.0/0',
+	listen_addresses => '*',
+	postgres_password => 'password',
+}
+
+
+class { 'wildfly':
+  version        => '10.1.0',
+  install_source => 'http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz',
+}
+
